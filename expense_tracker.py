@@ -186,6 +186,7 @@ def main():
             show_summary(expenses)
         else:
             print(f"All entries stay saved in {CSV_FILE}. Goodbye!")
+            break
 
 
 if __name__ == "__main__":
