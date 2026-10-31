@@ -155,6 +155,25 @@ def show_summary(expenses):
     print(f"\nYou spent the most on: {top} ({totals[top]:.2f})")
 
 
+def clear_expenses(expenses):
+    print("\n--- Clear All Expenses ---")
+    if not expenses:
+        print("Nothing to clear. The list is already empty.")
+        return
+    print(f"This will PERMANENTLY delete all {len(expenses)} entries. This cannot be undone.")
+    while True:
+        confirm = input("Are you sure you want to continue? (y/n): ").strip().lower()
+        if confirm in ("y", "yes"):
+            expenses.clear()
+            save_expenses(expenses)
+            print(f"All entries deleted. {CSV_FILE} now contains only the header.")
+            return
+        if confirm in ("n", "no"):
+            print("Cancelled. All entries are safe.")
+            return
+        print("Please answer y or n.")
+
+
 def main():
     print("=" * 40)
     print("     Personal Expense Tracker (CSV)")
@@ -169,8 +188,8 @@ def main():
     while True:
         choice = get_operation(
             "\nMAIN MENU\n1. Add expense\n2. View all expenses\n3. Filter expenses\n"
-            "4. Category summary\n5. Exit\nChoose an option (1-5): ",
-            ["1", "2", "3", "4", "5"],
+            "4. Category summary\n5. Exit\n6. Clear all expenses\nChoose an option (1-6): ",
+            ["1", "2", "3", "4", "5", "6"],
         )
 
         if choice == "1":
@@ -184,6 +203,8 @@ def main():
             filter_expenses(expenses)
         elif choice == "4":
             show_summary(expenses)
+        elif choice == "6":
+            clear_expenses(expenses)
         else:
             print(f"All entries stay saved in {CSV_FILE}. Goodbye!")
             break

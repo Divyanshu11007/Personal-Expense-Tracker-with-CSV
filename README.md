@@ -13,6 +13,7 @@ Built as a practice project to learn structured data storage and file I/O operat
   - Exact date (`YYYY-MM-DD`, real date validation)
   - Minimum amount (e.g. everything of 7.00 or more)
 - **Category summary statistics** — entries, total amount spent, and percentage share per category, a grand total, and the category you spent the most on.
+- **Clear all expenses** — permanently wipes every entry after an explicit `y/n` confirmation, and the entry count is shown before you decide.
 - **Persistent CSV storage** — expenses are saved to `expenses.csv` using the `csv` module; the file is created automatically on the first entry and reloaded on the next run.
 - **Input validation** — every prompt uses a `while` loop, so invalid amounts, empty categories, or bad menu choices never crash the program.
 
@@ -52,10 +53,11 @@ MAIN MENU
 3. Filter expenses
 4. Category summary
 5. Exit
-Choose an option (1-5):
+6. Clear all expenses
+Choose an option (1-6):
 ```
 
-Pick an option from `1` to `5`. All entries stay saved in `expenses.csv` between runs. Keep this file in the same folder as the script.
+Pick an option from `1` to `6`. Option `5` quits the program; option `6` asks for confirmation before deleting anything. All entries stay saved in `expenses.csv` between runs. Keep this file in the same folder as the script.
 
 ## Example Session
 
